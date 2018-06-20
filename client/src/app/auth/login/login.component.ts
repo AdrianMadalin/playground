@@ -5,26 +5,26 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
-  public registerForm: FormGroup;
+export class LoginComponent implements OnInit {
+  public loginForm: FormGroup;
 
   constructor(private authService: AuthService,
               public router: Router) {
   }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
+    this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(3)]),
     })
   }
 
-  onSubmitRegister() {
-    console.log(this.registerForm);
-    this.authService.registerUser({email: this.registerForm.value.email, password: this.registerForm.value.password});
+  onSubmitLogin() {
+    console.log(this.loginForm);
+    this.authService.loginUser({email: this.loginForm.value.email, password: this.loginForm.value.password});
   }
 
 }

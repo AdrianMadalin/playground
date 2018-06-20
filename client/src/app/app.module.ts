@@ -10,6 +10,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import {AngularMaterialModule} from "./angular-material.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {LoginComponent} from "./auth/login/login.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     GalleryComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

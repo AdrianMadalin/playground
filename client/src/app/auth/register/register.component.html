@@ -16,11 +16,14 @@
                placeholder="password"
                formControlName="password"
                name="password">
-        <mat-error *ngIf="!registerForm.controls?.password.valid">Password must be at least 6 characters long</mat-error>
+        <mat-error *ngIf="!registerForm.controls?.password.valid">Password must be at least 6 characters long
+        </mat-error>
       </mat-form-field>
       <div class="text-center">
         <button class="btn btn-outline-primary register-btn" [disabled]="registerForm.invalid">Register</button>
-        <button class="btn btn-outline-success register-btn" type="button">To login</button>
+        <button class="btn btn-outline-success register-btn" type="button"
+                (click)="router.navigate(['/app/login'])">To login
+        </button>
       </div>
     </form>
   </mat-card>
