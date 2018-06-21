@@ -11,6 +11,7 @@ import {AngularMaterialModule} from "./angular-material.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./auth/login/login.component";
+import { EntryComponent } from './home/sections/entry/entry.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {LoginComponent} from "./auth/login/login.component";
     GalleryComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,

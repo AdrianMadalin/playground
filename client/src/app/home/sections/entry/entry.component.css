@@ -1,0 +1,54 @@
+.entry-bg {
+  height: 100vh;
+  background-image: linear-gradient(to right bottom, rgba(119, 119, 119, 0.09), rgba(0, 0, 0, 0.5)), url("../../../../assets/images/home.jpeg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+
+.entry-text_box {
+  position: absolute;
+  width: 70%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.entry-text_box {
+  display: block;
+  letter-spacing: 35px;
+  color: lemonchiffon;
+}
+.entry-text_box--main {
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+.entry-text_box--sub {
+  display: block;
+  letter-spacing: 1.6rem;
+  font-size: 2rem;
+  font-weight: 600;
+  animation-name: fade-id;
+  animation-duration: 5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fade-id {
+  0% {
+    opacity: 100;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 30;
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
