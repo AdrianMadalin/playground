@@ -1,0 +1,21 @@
+.images {
+  width: 100%;
+  margin: auto;
+  background-color: #f7f7f7;
+}
+
+.images-format {
+  padding: 0;
+  opacity: 1;
+  transition: .5s all;
+}
+
+
+.images-format:hover {
+  opacity: .8;
+}
+
+.container {
+
+}
+

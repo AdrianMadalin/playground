@@ -1,0 +1,21 @@
+.about-us {
+  -webkit-clip-path: polygon(50% 5%, 55% 0%, 60% 5%, 65% 0%, 70% 5%, 75% 0%, 80% 5%, 85% 0%, 90% 5%, 95% 0%, 100% 5%,
+  100% 100%, 0 100%, 0 5%, 5% 0%, 10% 5%, 15% 0%, 20% 5%, 25% 0%, 30% 5%, 35% 0%, 40% 5%, 45% 0%);
+  clip-path: polygon(50% 5%, 55% 0%, 60% 5%, 65% 0%, 70% 5%, 75% 0%, 80% 5%, 85% 0%, 90% 5%, 95% 0%, 100% 5%,
+                   100% 100%, 0 100%, 0 5%, 5% 0%, 10% 5%, 15% 0%, 20% 5%, 25% 0%, 30% 5%, 35% 0%, 40% 5%, 45% 0%);
+  background-color: #f7f7f7;
+  margin-top: -50px;
+}
+
+.about-us_header {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 3rem;
+  padding-top: 5rem;
+}
+
+.about-us_detail {
+  text-align: justify;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 0;
+}

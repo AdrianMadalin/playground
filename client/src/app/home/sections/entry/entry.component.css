@@ -17,25 +17,49 @@
 
 .entry-text_box {
   display: block;
-  letter-spacing: 35px;
-  color: lemonchiffon;
+  letter-spacing: 20px;
+  color: #fff;
 }
+
 .entry-text_box--main {
   font-size: 5rem;
-  font-weight: 400;
+  font-weight: 600;
+  animation-name: fade-id-main;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
 }
 
 .entry-text_box--sub {
   display: block;
   letter-spacing: 1.6rem;
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 600;
-  animation-name: fade-id;
+  animation-name: fade-id-sub;
   animation-duration: 5s;
-  animation-timing-function: ease-in;
+  animation-delay: 2s;
+  animation-timing-function: linear;
 }
 
-@keyframes fade-id {
+@keyframes fade-id-main {
+
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 25;
+  }
+
+  50% {
+    opacity: 50;
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes fade-id-sub {
   0% {
     opacity: 100;
   }
@@ -51,4 +75,127 @@
   100% {
     opacity: 100;
   }
+}
+
+.entry-btn_box {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.entry-btn {
+  /*color: #007bff;*/
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  border: 3px solid #fff;
+  background-color: transparent;
+  animation: btn-slide 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes btn-slide {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 25;
+  }
+
+  35% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 25;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 25;
+  }
+}
+
+.entry-upBtn {
+  position: fixed;
+  left: 85%;
+  bottom: 10%;
+  z-index: 100;
+  animation: upScroll 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.entry-upBtn:hover {
+  bottom: 20%;
+}
+
+.entry-upBtn > button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #28a745;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.entry-upBtn > button:hover {
+  color: #fff;
+  animation: upScroll;
+  animation-play-state: paused;
+}
+
+@keyframes upScroll {
+  0% {
+    bottom: 10%;
+  }
+
+  10% {
+    bottom: 11%;
+  }
+  20% {
+    bottom: 12%;
+  }
+
+  30% {
+    bottom: 13%;
+  }
+  40% {
+    bottom: 14%;
+  }
+
+  50% {
+    bottom: 15%;
+  }
+  60% {
+    bottom: 14%;
+  }
+
+  70% {
+    bottom: 13%;
+  }
+
+  80% {
+    bottom: 12%;
+  }
+
+  90% {
+    bottom: 11%;
+  }
+
+  100% {
+    bottom: 10%;
+  }
+
 }

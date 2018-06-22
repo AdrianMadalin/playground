@@ -1,0 +1,63 @@
+footer {
+  -webkit-clip-path: polygon(50% 5%, 55% 0%, 60% 5%, 65% 0%, 70% 5%, 75% 0%, 80% 5%, 85% 0%, 90% 5%, 95% 0%, 100% 5%,
+  100% 100%, 0 100%, 0 5%, 5% 0%, 10% 5%, 15% 0%, 20% 5%, 25% 0%, 30% 5%, 35% 0%, 40% 5%, 45% 0%);
+  clip-path: polygon(50% 5%, 55% 0%, 60% 5%, 65% 0%, 70% 5%, 75% 0%, 80% 5%, 85% 0%, 90% 5%, 95% 0%, 100% 5%,
+  100% 100%, 0 100%, 0 5%, 5% 0%, 10% 5%, 15% 0%, 20% 5%, 25% 0%, 30% 5%, 35% 0%, 40% 5%, 45% 0%);
+  width: 100%;
+  /*background-color: #495057;*/
+  background-color: #f7f7f7;
+  height: 125px;
+  margin-top: -60px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.footer-icon-container{
+  margin-top: 2rem;
+  align-self: center;
+}
+
+.socialize-icon {
+  transition: .2s all;
+  color: #676767;
+  font-size: 2.8rem;
+  padding-left: 1rem;
+}
+
+.socialize-icon:hover {
+  /*color:#ffc107;*/
+  transform: scale(1.2);
+}
+
+
+.footer-text {
+  color: #676767;
+  margin-top: 3rem;
+  align-self: flex-start;
+  /*padding-top: 3rem;*/
+}
+
+.footer-text-left {
+  border-right: .3rem double #676767;
+}
+
+.footer-text-left > p {
+  padding-right: 1rem;
+}
+
+.footer-text-right {
+  border-left: .3rem double #676767;
+}
+
+.footer-text-right > p {
+  padding-left: 1rem;
+}
+
+.footer-text > p {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 2rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
