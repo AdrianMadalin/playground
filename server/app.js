@@ -6,7 +6,8 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const database = require('./config/database');
 
-const usersRouter = require('./routes/users');
+const usersRoute = require('./routes/users');
+const imageRoute = require('./routes/images');
 
 database.then(() => {
     console.log('Connected to the databse');
@@ -16,11 +17,12 @@ database.then(() => {
 });
 
 const app = express();
-
+app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join('public/gallery/images')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,8 +31,8 @@ app.use((req, res, next) => {
     next();
 });
 
-
-app.use('/api/users', usersRouter);
+app.use('/api/users', usersRoute);
+app.use('/api/gallery/images', imageRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -23,7 +23,7 @@
 
 .entry-text_box--main {
   font-size: 5rem;
-  font-weight: 600;
+  font-weight: 500;
   animation-name: fade-id-main;
   animation-duration: 5s;
   animation-timing-function: ease-in-out;
@@ -33,7 +33,7 @@
   display: block;
   letter-spacing: 1.6rem;
   font-size: 3.5rem;
-  font-weight: 600;
+  font-weight: 400;
   animation-name: fade-id-sub;
   animation-duration: 5s;
   animation-delay: 2s;
@@ -87,44 +87,47 @@
 }
 
 .entry-btn {
-  /*color: #007bff;*/
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: 500;
   width: 75px;
   height: 75px;
+  font-size: 1.3rem;
   border-radius: 100%;
-  border: 3px solid #fff;
+  border: 1.5px solid #fff;
   background-color: transparent;
-  animation: btn-slide 5s;
+  animation: btn-fade 5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-@keyframes btn-slide {
+@keyframes btn-fade {
   0% {
     opacity: 0;
   }
 
-  25% {
-    opacity: 25;
+  20% {
+    opacity: .3;
   }
 
-  35% {
-    opacity: 0;
+  40% {
+    opacity: .5;
   }
 
-  50% {
-    opacity: 25;
+  60% {
+    opacity: 1;
   }
 
-  75% {
-    opacity: 0;
+  80% {
+    opacity: .5;
+  }
+
+  90% {
+    opacity: .3;
   }
 
   100% {
-    opacity: 25;
+    opacity: 0;
   }
+
 }
 
 .entry-upBtn {
@@ -144,10 +147,9 @@
 .entry-upBtn > button {
   width: 60px;
   height: 60px;
+  background-color: #009fdc;
   border-radius: 50%;
-  color: #28a745;
-  font-size: 1.5rem;
-  font-weight: 300;
+  color: #fff;
 }
 
 .entry-upBtn > button:hover {
@@ -198,4 +200,39 @@
     bottom: 10%;
   }
 
+}
+
+@media ( max-width: 1000px) {
+  .entry-text_box--main {
+    font-size: 4rem;
+  }
+
+  .entry-text_box--sub {
+    font-size: 2.5rem;
+  }
+}
+
+@media ( max-width: 640px) {
+  .entry-text_box {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .entry-text_box--main {
+    font-size: 3rem;
+    letter-spacing: .5rem;
+  }
+
+  .entry-text_box--main_1 {
+    padding-left: 1rem;
+  }
+
+  .entry-text_box--sub {
+    font-size: 2rem;
+    letter-spacing: .5rem;
+  }
+
+  .entry-upBtn {
+    left: 80%;
+  }
 }

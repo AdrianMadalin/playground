@@ -1,14 +1,14 @@
 <div class="container">
   <mat-card class="col-xl-8 col-md-8 offset-xl-2 offset-md-2">
     <h3 class="text-center">Login</h3>
-    <form class="register-form" [formGroup]="loginForm" (submit)="onSubmitLogin()">
+    <form class="register-form" [formGroup]="contactForm" (submit)="onSubmitLogin()">
       <mat-form-field class="form-control">
         <input matInput
                type="email"
                placeholder="email"
                formControlName="email"
                name="email">
-        <mat-error *ngIf="!loginForm.controls?.email.valid">Please enter a valid email</mat-error>
+        <mat-error *ngIf="!contactForm.controls?.email.valid">Please enter a valid email</mat-error>
       </mat-form-field>
       <mat-form-field class="form-control">
         <input matInput
@@ -16,10 +16,10 @@
                placeholder="password"
                formControlName="password"
                name="password">
-        <mat-error *ngIf="!loginForm.controls?.password.valid">Password must be at least 6 characters long</mat-error>
+        <mat-error *ngIf="!contactForm.controls?.password.valid">Password must be at least 6 characters long</mat-error>
       </mat-form-field>
       <div class="text-center">
-        <button class="btn btn-outline-success login-btn" [disabled]="loginForm.invalid">Login</button>
+        <button class="btn btn-outline-success login-btn" [disabled]="contactForm.invalid">Login</button>
         <button class="btn btn-outline-primary login-btn" type="button" (click)="router.navigate(['/app/register'])">To register</button>
       </div>
     </form>

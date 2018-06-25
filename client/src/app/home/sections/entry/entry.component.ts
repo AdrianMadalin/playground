@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import * as $ from "jquery";
+
+declare const jquery: any;
+declare const $: any;
 
 @Component({
   selector: 'app-entry',
@@ -12,10 +14,11 @@ export class EntryComponent implements OnInit {
   }
 
   ngOnInit() {
-     $(window).scroll(function (event) {
+    $('#upBtn').hide(['1s', 'slow']).removeClass('entry-upBtn');
+    $(window).scroll(function (event) {
       const heigth = $(window).scrollTop();
       if (heigth < 300) {
-        console.log(heigth);
+        // console.log(heigth);
         $('#upBtn').hide(['1s', 'slow']).removeClass('entry-upBtn');
       } else {
         $('#upBtn').show(['1s', 'slow']).addClass('entry-upBtn');
@@ -25,7 +28,8 @@ export class EntryComponent implements OnInit {
 
   onScroll() {
     $('html,body').animate({
-      scrollTop: $("#foto").offset().top}, 'slow');
+      scrollTop: $("#foto").offset().top
+    }, 'slow');
   }
 
   scrollTop() {

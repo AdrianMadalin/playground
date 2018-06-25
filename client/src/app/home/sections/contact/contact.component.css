@@ -1,20 +1,29 @@
 section {
-  padding: 2rem 0;
   background-color: #f7f7f7;
 }
+
 .contact {
   font-family: 'Roboto', sans-serif;
   color: #676767;
+}
 
+.contact-center {
+  margin: 0 auto;
 }
 
 .contact-h {
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .contact-p {
   margin-bottom: .5rem;
+}
+
+.contact-p > a {
+  color: #009fdc;
+  padding-left: 1rem;
+  text-decoration: none;
 }
 
 .contact-card-offset {
@@ -23,4 +32,39 @@ section {
 
 agm-map {
   height: 400px;
+}
+
+.contact-page {
+  background-color: #009fdc;
+  padding: 2rem 0;
+}
+
+.contact-page--white, .contact-page--white > a  {
+  color: #fff;
+}
+
+.contact-page--inputOffset {
+  margin-bottom: .5rem;
+}
+
+p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.btn-send-email {
+  margin-top: .5rem;
+  transition: .5s all
+}
+
+.btn-send-email:disabled {
+  background-color: #f7f7f7;
+}
+
+.btn-send-email:hover {
+  transform: scale(1.2) rotateZ(-5deg);
+}
+
+.btn-send-email:disabled:hover {
+  transform: scale(1) rotateZ(0deg);
 }

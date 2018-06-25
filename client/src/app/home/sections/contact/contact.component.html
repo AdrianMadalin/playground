@@ -1,25 +1,119 @@
-<section>
+<section class="contact-page" *ngIf="isContact">
   <div class="container">
     <div class="row">
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 contact-card-offset">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="row">
+          <div class="contact-center">
+            <h3 class="contact contact-h contact-page--white">Unde ne gasiti?</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="contact-center">
+            <p class="contact contact-p contact-page--white">Bd. Bucurestii Noi, nr. 48, sector 1, Bucuresti</p>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 1rem">
+          <div class="contact-center">
+            <h3 class="contact contact-h contact-page--white">Programul nostru este:</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="contact-center">
+            <p class="contact contact-p contact-page--white">Luni - Sambata: 12:00 PM - 8:00 PM</p>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 1rem">
+          <div class="contact-center">
+            <p class="contact contact-p contact-page--white">Pentru evenimente sau informaţii suplimentare</p>
+            <p class="contact contact-p contact-page--white">ne puteţi contacta prin formularul alaturat sau la:</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="contact-center">
+            <p class="contact contact-p contact-page--white">
+              <span><i class="fa fa-phone-square"></i></span>
+              <a href="tel:+0720 317 252">0720 317 252 </a>
+            </p>
+            <p class="contact contact-p contact-page--white">
+              <span><i class="fa fa-envelope" style="padding-right: .5rem"></i></span>
+              kidspartykungfupizza@gmail.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <form class="register-form" [formGroup]="contactForm" (submit)="onSubmitContact()">
+          <mat-form-field class="form-control contact-page--inputOffset">
+            <input matInput
+                   type="text"
+                   placeholder="nume"
+                   formControlName="name"
+                   name="name"
+                   class="">
+            <mat-error *ngIf="!contactForm.controls?.name.valid">Va rugam introduceti numele dumneavoastra</mat-error>
+          </mat-form-field>
+          <mat-form-field class="form-control contact-page--inputOffset">
+            <input matInput
+                   type="email"
+                   placeholder="email"
+                   formControlName="email"
+                   name="email">
+            <mat-error *ngIf="!contactForm.controls?.email.valid">Va rugam introduceti o adresa de email</mat-error>
+          </mat-form-field>
+          <mat-form-field class="form-control contact-page--inputOffset">
+            <input matInput
+                   type="tel"
+                   placeholder="telefon"
+                   formControlName="phone"
+                   name="phone">
+          </mat-form-field>
+          <mat-form-field class="form-control contact-page--inputOffset">
+            <textarea matInput
+                      placeholder="mesaj"
+                      formControlName="message"
+                      name="message"
+                      rows="3"></textarea>
+            <mat-error *ngIf="!contactForm.controls?.message.valid">Va rugam introduceti mesajul dumneavoastra
+            </mat-error>
+          </mat-form-field>
+          <div class="text-center">
+            <button mat-raised-button
+                    class="btn-send-email"
+                    [color]="'accent'"
+                    [disabled]="contactForm.invalid">
+              <i class="fa fa-paper-plane-o"></i>
+              Trimite
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" *ngIf="!isContact">
+    <div class="row">
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 contact-card-offset">
         <div class="text-center">
           <h3 class="contact contact-h">Contact</h3>
         </div>
         <div class="text-center">
-          <p class="contact contact-p">Telefon informatii si rezervari: <a href="tel:+0720 317 252">0720 317 252 </a></p>
+          <p class="contact contact-p">Telefon informatii si rezervari:<a href="tel:+0720 317 252">0720 317 252 </a>
+          </p>
           <p class="contact contact-p">Email: kidspartykungfupizza@gmail.com</p>
         </div>
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 contact-card-offset">
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 contact-card-offset">
         <div class="text-center">
-          <h3 class="contact contact-h">Program</h3>
+          <h3 class="contact contact-h"> Program</h3>
         </div>
         <div class="text-center">
           <p class="contact contact-p">Luni - Sambata: 12:00 PM - 8:00 PM</p>
         </div>
 
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 contact-card-offset">
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 contact-card-offset">
         <div class="text-center">
           <h3 class="contact contact-h">Adresa locatie</h3>
         </div>
@@ -44,28 +138,6 @@
     </agm-marker>
   </agm-map>
 
-  <div class="container" *ngIf="false">
-    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 offset-xl-3 offset-lg-3">
-      <form>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Numele dumneavoastra">
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                 placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <input type="tel" class="form-control" placeholder="Telefon">
-        </div>
-        <div class="form-group">
-          <textarea name="" id="" cols="10" rows="5" placeholder="Mesaj" class="form-control"></textarea>
-        </div>
-
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary">Trimite</button>
-        </div>
-      </form>
-    </div>
-  </div>
 </section>
+
+<app-footer *ngIf="isContact"></app-footer>

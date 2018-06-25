@@ -40,10 +40,14 @@
 <section class="images-peek" id="foto">
   <div class="container">
     <div class="text-center">
-      <h3 class="images-text">
-        <a href="">Te asteptam in sectiunea noastra foto</a>
-        <a href=""> / sau sectiunea video</a>
-      </h3>
+      <div class="images-text">
+        <p>Te asteptam in sectiunea noastra</p>
+        <a routerLink="/galerie-video" class="images-peek-a images-photo">foto </a>
+        <p class="images-peek-slash"> / </p>
+        <a routerLink="/galerie-foto" class="images-peek-a images-video"> sau sectiunea video</a>
+        <button class="btn btn-phone btn-phone--photo"><i class="fa fa-camera-retro fa-2x"></i></button>
+        <button class="btn btn-phone btn-phone--video"><i class="fa fa-video-camera fa-2x"></i></button>
+      </div>
     </div>
   </div>
 </section>
