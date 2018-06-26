@@ -48,16 +48,24 @@ export class AuthService {
       })
   }
 
-  saveCredentials(userCredentials: { userId: string, token: string }) {
+  public saveCredentials(userCredentials: { userId: string, token: string }) {
     localStorage.setItem('userId', userCredentials.userId);
     localStorage.setItem('token', userCredentials.token);
   }
 
-  getToken() {
+  public getToken() {
     if(localStorage.getItem('token')) {
       return localStorage.getItem('token')
     } else {
       return null;
     }
+  }
+
+  public clearToken() {
+    localStorage.removeItem('token');
+  }
+
+  public logout() {
+    localStorage.clear();
   }
 }

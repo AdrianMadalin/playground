@@ -1,0 +1,47 @@
+.image-upload-container{
+  margin-top: 2rem;
+}
+
+mat-card > h3 {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 3rem;
+}
+
+.wrapper{
+  min-height: 83vh;
+  position: relative;
+}
+
+.reset-margin-padding{
+  margin: 0;
+  padding: 0;
+}
+
+.photo-h {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 3rem;
+  padding: 5rem 0 3rem 0;
+}
+
+.image-fill{
+  margin: 0;
+  padding: 0;
+}
+
+.btn-position {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: .5s all;
+}
+
+.btn-position:hover {
+  transform: translate(-40%, -50%) scale(1.2);
+}
+
+@media (max-width: 740px) {
+  .photo{
+    flex-direction: column;
+  }
+}

@@ -55,8 +55,10 @@ router.post('/login', (req, res, next) => {
                 bcrypt.compare(user.password, foundUser.password)
                     .then(isChecked => {
                         if (isChecked) {
-                            console.log(tokenSecret.secret());
-                            jsonwebtoken.sign(user, tokenSecret.secret(), (error, token) => {
+                            const jsonwebtokenOptions = {
+                                expiresIn: '120s'
+                            };
+                            jsonwebtoken.sign(user, tokenSecret.secret(), jsonwebtokenOptions, (error, token) => {
                                 if (error) {
                                     console.log(error);
                                 } else {
@@ -68,7 +70,6 @@ router.post('/login', (req, res, next) => {
                                 }
                             });
                         }
-                        console.log(isChecked);
                     })
                     .catch();
                 console.log(foundUser);
@@ -76,7 +77,8 @@ router.post('/login', (req, res, next) => {
             .catch(error => {
                 console.log(error);
             });
-        // bcrypt.compare()
+    } else {
+        return next();
     }
 });
 

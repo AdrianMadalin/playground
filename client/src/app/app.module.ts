@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {AngularMaterialModule} from "./angular-material.module";
 
@@ -20,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { VideoComponent } from './gallery/video/video.component';
 
 import {AgmCoreModule} from "@agm/core";
+import {AuthInterceptor} from "./auth/auth-interceptor";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import {AgmCoreModule} from "@agm/core";
       apiKey: `AIzaSyDcaeuvCfvHQEagB2SwtBpKgC86BijisbU`
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

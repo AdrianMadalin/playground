@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PhotoVideoService} from "../photo-video.service";
 import {Image} from "../image";
+import {Router} from "@angular/router";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-foto',
@@ -13,18 +15,32 @@ export class FotoComponent implements OnInit {
   selectedFile: File = null;
   imageFormData: FormData = null;
   public images: Image[] = [];
+  public isAuth: Boolean = false;
 
-  constructor(private photoVideoSrv: PhotoVideoService) {
+  constructor(private photoVideoSrv: PhotoVideoService,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.isAuth = !!this.authService.getToken();
+    console.log(this.isAuth);
+    this.getImages();
     this.uploadImageForm = new FormGroup({
       image: new FormControl(null, [Validators.required])
     });
 
-    this.photoVideoSrv.getImages();
-    this.images = this.photoVideoSrv.getAllImages();
-    console.log(this.images);
+  }
+
+  public getImages() {
+    this.photoVideoSrv.getImages()
+      .subscribe((response) => {
+        console.log(response);
+        this.images = response.images;
+        console.log(this.images);
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   onFileSelected(event) {
@@ -40,9 +56,42 @@ export class FotoComponent implements OnInit {
     }
   }
 
-  onSubmitImage() {
-    console.log(this.uploadImageForm);
-    this.photoVideoSrv.uploadImage(this.imageFormData);
+  public onUploadImage() {
+    this.photoVideoSrv.uploadImage(this.imageFormData)
+      .subscribe((response) => {
+        console.log(response);
+        for (let i = 0; i < response.images.length; i++) {
+          this.images.unshift(response.images[i])
+        }
+      }, (error) => {
+        this.authService.clearToken();
+        this.isAuth = false;
+        if (error.error.message === "You are not authenticated!") {
+          this.router.navigate(['/app/login']);
+        }
+
+        if (error.message === "Fail to save images to the database") {
+          alert('Server error');
+        }
+
+        console.log(error);
+        alert('Server error');
+      });
+
+  }
+
+  public onRemoveImage(index: number, id: string) {
+    this.photoVideoSrv.deteleImage(id)
+      .subscribe(response => {
+        this.images.splice(index, 1);
+      }, error => {
+        if (error.error.message === "You are not authenticated!") {
+          alert('Sesiune expirata. Va rugam sa va relogati');
+          this.isAuth = false;
+          this.authService.clearToken();
+          this.router.navigate(['/app/login']);
+        }
+      })
   }
 
 }

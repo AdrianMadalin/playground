@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container image-upload-container" *ngIf="isAuth">
   <mat-card class="col-xl-8 col-md-8 offset-xl-2 offset-md-2">
     <h3 class="text-center">Incarca imagini</h3>
-    <form class="image-form" [formGroup]="uploadImageForm" (submit)="onSubmitImage()">
+    <form class="image-form" [formGroup]="uploadImageForm" (submit)="onUploadImage()">
       <input type="file"
              formControlName="image"
              name="image"
@@ -14,10 +14,22 @@
   </mat-card>
 </div>
 
-<section class="photo">
-<div class="row">
-  <div *ngFor="let image of images">
-    <img [src]="image.path" [alt]="image.name">
+<section>
+  <div class="wrapper">
+    <div class="container text-center">
+      <h3 class="photo-h">Galerie imagini</h3>
+    </div>
+    <div class="row reset-margin-padding">
+      <div *ngFor="let image of images; let i=index;"
+           class="col-xl-4 col-lg-4 col-md-4 col-sm-12 reset-margin-padding">
+        <img [src]="image.path" [alt]="image.name" class="img-fluid">
+        <button (click)="onRemoveImage(i, image._id)"
+                class="btn btn-danger btn-position">
+          <i class="fa fa-trash fa-2x"></i>
+        </button>
+      </div>
+    </div>
   </div>
-</div>
 </section>
+
+<app-footer></app-footer>
