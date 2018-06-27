@@ -8,6 +8,7 @@ const database = require('./config/database');
 
 const usersRoute = require('./routes/users');
 const imageRoute = require('./routes/images');
+const videoRoute = require('./routes/videos');
 
 database.then(() => {
     console.log('Connected to the databse');
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join('public/gallery/images')));
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Request-With, Content-Type, Accept, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
     next();
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 
 app.use('/api/users', usersRoute);
 app.use('/api/gallery/images', imageRoute);
+app.use('/api/gallery/videos', videoRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

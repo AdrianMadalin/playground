@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PhotoVideoService} from "../photo-video.service";
 import {Image} from "../image";
@@ -16,11 +16,8 @@ export class FotoComponent implements OnInit {
   imageFormData: FormData = null;
   public images: Image[] = [];
   public isAuth: Boolean = false;
-  public displayModal: Boolean = false;
-  public deleteImage: Boolean = false;
-  public image: {_id: string, index: number} = {_id: 'one', index: 5};
-  public deleteAlertModal = document.getElementById('dialog-modal');
-  @ViewChild('dialogModal') dialogModal;
+  public isDisplayed: Boolean = false;
+  public image: { _id: string, index: number } = {_id: 'one', index: 5};
 
   constructor(private photoVideoSrv: PhotoVideoService,
               private router: Router,
@@ -29,7 +26,6 @@ export class FotoComponent implements OnInit {
 
   ngOnInit() {
     this.isAuth = !!this.authService.getToken();
-    console.log(this.isAuth);
     this.getImages();
     this.uploadImageForm = new FormGroup({
       image: new FormControl(null, [Validators.required])
@@ -83,34 +79,24 @@ export class FotoComponent implements OnInit {
   }
 
   public onRemoveBtnClick(index: number, id: string) {
-    // this.deleteAlertModal.classList.remove('hidden');
-    // this.deleteAlertModal.classList.add('show');
     this.image._id = id;
     this.image.index = index;
-    console.log(this.image);
-    console.log(index);
-    console.log(this.dialogModal);
+    this.isDisplayed = true;
   }
 
   public onDeleteImage() {
-    if(this.deleteImage) {
-      this.photoVideoSrv.deteleImage(this.image._id)
-        .subscribe(response => {
-          this.images.splice(this.image.index, 1);
-          this.deleteAlertModal.classList.remove('show');
-          this.deleteAlertModal.classList.add('hidden');
-        }, error => {
-          if (error.error.message === "You are not authenticated!") {
-            alert('Sesiune expirata. Va rugam sa va relogati');
-            this.isAuth = false;
-            this.authService.clearToken();
-            this.router.navigate(['/app/login']);
-          }
-        })
-    } else {
-      this.deleteAlertModal.classList.remove('show');
-      this.deleteAlertModal.classList.add('hidden');
-    }
+    this.photoVideoSrv.deteleImage(this.image._id)
+      .subscribe(response => {
+        this.images.splice(this.image.index, 1);
+        this.isDisplayed = false;
+      }, error => {
+        if (error.error.message === "You are not authenticated!") {
+          alert('Sesiune expirata. Va rugam sa va relogati');
+          this.isAuth = false;
+          this.authService.clearToken();
+          this.router.navigate(['/app/login']);
+        }
+      })
   }
 
 }

@@ -21,6 +21,7 @@ import { VideoComponent } from './gallery/video/video.component';
 
 import {AgmCoreModule} from "@agm/core";
 import {AuthInterceptor} from "./auth/auth-interceptor";
+import {SafePipe} from "./pipes/safe.pipe";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {AuthInterceptor} from "./auth/auth-interceptor";
     ContactComponent,
     FooterComponent,
     FotoComponent,
-    VideoComponent
+    VideoComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

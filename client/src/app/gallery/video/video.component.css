@@ -1,0 +1,38 @@
+.btn-position {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: .5s all;
+}
+
+.btn-position:hover {
+  transform: translate(-40%, -50%) scale(1.2);
+}
+
+.hidden {
+  display: none;
+  transition: 1s all;
+}
+
+.show {
+  display: block;
+  transition: 1s all;
+}
+
+.dialog-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 100;
+}
+
+.dialog-center-vertical {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

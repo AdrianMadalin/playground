@@ -1,40 +1,51 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Image} from "./image";
-import {AuthService} from "../auth/auth.service";
+import {Video} from "./video";
 
 @Injectable({providedIn: "root"})
 export class PhotoVideoService {
-  private images: Image[] = [];
-
-  constructor(private http: HttpClient,
-              private authService: AuthService) {
+  private srvPrefix = 'http://localhost:8080';
+  private imagesUrl = '/api/gallery/images';
+  private videoUrl = '/api/gallery/videos';
+  constructor(private http: HttpClient) {
 
   }
 
-  getImages() {
-    const srvPrefix = 'http://localhost:8080';
-    const url = '/api/gallery/images';
+  public getImages() {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.get<{ message: string, images: Image[] }>(srvPrefix + url, {headers})
+    return this.http.get<{ message: string, images: Image[] }>(this.srvPrefix + this.imagesUrl, {headers})
   }
 
-  uploadImage(formData: FormData) {
-    const srvPrefix = 'http://localhost:8080';
-    const url = '/api/gallery/images';
+  public uploadImage(formData: FormData) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post<{ message: string, images: Image[] }>(srvPrefix + url, formData, {headers})
+    return this.http.post<{ message: string, images: Image[] }>(this.srvPrefix + this.imagesUrl, formData, {headers})
   }
 
-  deteleImage(id: string) {
-    const srvPrefix = 'http://localhost:8080';
-    const url = '/api/gallery/images/' + id;
+  public deteleImage(id: string) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.delete<{ message: string, images: Image[] }>(srvPrefix + url, {headers})
+    return this.http.delete<{ message: string, images: Image[] }>(`${this.srvPrefix}${this.imagesUrl}/${id}`, {headers})
   }
 
+  public getVideos() {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get<{ message: string, videos: Video[] }>(this.srvPrefix + this.videoUrl, {headers})
+  }
+
+  public uploadVideo(videoIframe: {url: string}) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<{ message: string, video: Video }>(this.srvPrefix + this.videoUrl, videoIframe, {headers})
+  }
+
+  public deteleVideo(id: string) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete<{ message: string, video: Video }>(`${this.srvPrefix}${this.videoUrl}/${id}`, {headers})
+  }
 
 }
