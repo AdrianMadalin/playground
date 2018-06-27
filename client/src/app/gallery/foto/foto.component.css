@@ -1,4 +1,4 @@
-.image-upload-container{
+.image-upload-container {
   margin-top: 2rem;
 }
 
@@ -7,12 +7,12 @@ mat-card > h3 {
   font-size: 3rem;
 }
 
-.wrapper{
+.wrapper {
   min-height: 83vh;
   position: relative;
 }
 
-.reset-margin-padding{
+.reset-margin-padding {
   margin: 0;
   padding: 0;
 }
@@ -23,7 +23,7 @@ mat-card > h3 {
   padding: 5rem 0 3rem 0;
 }
 
-.image-fill{
+.image-fill {
   margin: 0;
   padding: 0;
 }
@@ -40,8 +40,34 @@ mat-card > h3 {
   transform: translate(-40%, -50%) scale(1.2);
 }
 
+.hidden {
+  display: none;
+  transition: 1s all;
+}
+
+.show {
+  display: block;
+  transition: 1s all;
+}
+
+.dialog-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.dialog-center-vertical {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media (max-width: 740px) {
-  .photo{
+  .photo {
     flex-direction: column;
   }
 }

@@ -76,7 +76,6 @@ router.post('', checkAuthToken, multer({storage}).array('image', 5), (req, res, 
             })
         })
         .catch(error => {
-            console.log(error, 'jhdashdjsahjdhjsadh');
             res.status(502).json({
                 status: 'fail',
                 message: 'Fail to save images to the database',

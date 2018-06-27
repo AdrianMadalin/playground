@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PhotoVideoService} from "../photo-video.service";
 import {Image} from "../image";
@@ -16,6 +16,11 @@ export class FotoComponent implements OnInit {
   imageFormData: FormData = null;
   public images: Image[] = [];
   public isAuth: Boolean = false;
+  public displayModal: Boolean = false;
+  public deleteImage: Boolean = false;
+  public image: {_id: string, index: number} = {_id: 'one', index: 5};
+  public deleteAlertModal = document.getElementById('dialog-modal');
+  @ViewChild('dialogModal') dialogModal;
 
   constructor(private photoVideoSrv: PhotoVideoService,
               private router: Router,
@@ -59,7 +64,6 @@ export class FotoComponent implements OnInit {
   public onUploadImage() {
     this.photoVideoSrv.uploadImage(this.imageFormData)
       .subscribe((response) => {
-        console.log(response);
         for (let i = 0; i < response.images.length; i++) {
           this.images.unshift(response.images[i])
         }
@@ -67,31 +71,46 @@ export class FotoComponent implements OnInit {
         this.authService.clearToken();
         this.isAuth = false;
         if (error.error.message === "You are not authenticated!") {
+          alert('Sesiune expirata. Va rugam sa va relogati');
           this.router.navigate(['/app/login']);
         }
 
-        if (error.message === "Fail to save images to the database") {
+        if (error.error.message === "Fail to save images to the database") {
           alert('Server error');
         }
-
-        console.log(error);
-        alert('Server error');
       });
 
   }
 
-  public onRemoveImage(index: number, id: string) {
-    this.photoVideoSrv.deteleImage(id)
-      .subscribe(response => {
-        this.images.splice(index, 1);
-      }, error => {
-        if (error.error.message === "You are not authenticated!") {
-          alert('Sesiune expirata. Va rugam sa va relogati');
-          this.isAuth = false;
-          this.authService.clearToken();
-          this.router.navigate(['/app/login']);
-        }
-      })
+  public onRemoveBtnClick(index: number, id: string) {
+    // this.deleteAlertModal.classList.remove('hidden');
+    // this.deleteAlertModal.classList.add('show');
+    this.image._id = id;
+    this.image.index = index;
+    console.log(this.image);
+    console.log(index);
+    console.log(this.dialogModal);
+  }
+
+  public onDeleteImage() {
+    if(this.deleteImage) {
+      this.photoVideoSrv.deteleImage(this.image._id)
+        .subscribe(response => {
+          this.images.splice(this.image.index, 1);
+          this.deleteAlertModal.classList.remove('show');
+          this.deleteAlertModal.classList.add('hidden');
+        }, error => {
+          if (error.error.message === "You are not authenticated!") {
+            alert('Sesiune expirata. Va rugam sa va relogati');
+            this.isAuth = false;
+            this.authService.clearToken();
+            this.router.navigate(['/app/login']);
+          }
+        })
+    } else {
+      this.deleteAlertModal.classList.remove('show');
+      this.deleteAlertModal.classList.add('hidden');
+    }
   }
 
 }

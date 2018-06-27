@@ -56,7 +56,7 @@ router.post('/login', (req, res, next) => {
                     .then(isChecked => {
                         if (isChecked) {
                             const jsonwebtokenOptions = {
-                                expiresIn: '120s'
+                                expiresIn: '1h'
                             };
                             jsonwebtoken.sign(user, tokenSecret.secret(), jsonwebtokenOptions, (error, token) => {
                                 if (error) {
@@ -72,7 +72,6 @@ router.post('/login', (req, res, next) => {
                         }
                     })
                     .catch();
-                console.log(foundUser);
             })
             .catch(error => {
                 console.log(error);
