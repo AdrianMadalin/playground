@@ -1,7 +1,13 @@
 import {NgModule} from "@angular/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatCardModule, MatDialogModule, MatInputModule} from "@angular/material";
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatInputModule,
+  MatProgressSpinnerModule
+} from "@angular/material";
 
 @NgModule({
   exports: [
@@ -10,7 +16,8 @@ import {MatButtonModule, MatCardModule, MatDialogModule, MatInputModule} from "@
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Butterfly+Kids');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import '~font-awesome/css/font-awesome.css';
 
@@ -29,4 +30,11 @@ body {
 .reset-margin-padding {
   margin: 0;
   padding: 0;
+}
+
+.spinner-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

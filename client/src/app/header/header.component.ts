@@ -9,10 +9,13 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
+  public isAuth: Boolean = false;
+
   constructor(private authService: AuthService,
               private router: Router) { }
 
   ngOnInit() {
+    this.isAuth = !!this.authService.getToken();
   }
 
   onLogout() {

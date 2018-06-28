@@ -36,3 +36,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.video-h {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 3rem;
+  padding: 5rem 0 3rem 0;
+}
+
+

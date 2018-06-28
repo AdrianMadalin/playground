@@ -1,25 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Playground</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+<header>
+  <div class="header-logo">
+    <a class="" routerLink="/">Playground</a>
+  </div>
+  <div class="ml-auto header-links">
+    <ul class="form-inline">
+      <li><a routerLink="/" class="header-link-btn">Acasa</a></li>
+      <li><a routerLink="/galerie-foto" class="header-link-btn">Galerie foto</a></li>
+      <li><a routerLink="/galerie-video" class="header-link-btn">Galerie video</a></li>
+      <li><a routerLink="/contact" class="header-link-btn">Contact</a></li>
+      <li *ngIf="this.authService.isAuth"><a routerLink="/app/login" class="header-link-btn">Login</a></li>
+      <li *ngIf="this.authService.isAuth">
+        <a class="header-link-btn"
+           style="color: red; cursor: pointer"
+           (click)="onLogout()">Logout</a>
       </li>
-    </ul>
-    <ul class="form-inline my-2 my-lg-0" style="list-style-type: none">
-      <li><a routerLink="/galerie-foto" class="btn btn-outline-success my-2 my-sm-0">Foto</a></li>
-      <li><a routerLink="/galerie-video" class="btn btn-outline-success my-2 my-sm-0">Video</a></li>
-      <li><a routerLink="/contact" class="btn btn-outline-success my-2 my-sm-0">Contact</a></li>
-      <li><a routerLink="/app/login" class="btn btn-outline-success my-2 my-sm-0">Login</a></li>
-      <li><a routerLink="/app/login" class="btn btn-outline-danger my-2 my-sm-0"
-             (click)="onLogout()">Logout</a>
+      <li *ngIf="this.authService.isAuth">
+        <a routerLink="/app/register"
+           class="header-link-btn"
+           style="margin-left: 0.5rem">Register</a>
       </li>
-      <li><a routerLink="/app/register" class="btn btn-outline-primary my-2 my-sm-0" style="margin-left: 0.5rem">Register</a></li>
     </ul>
   </div>
-</nav>
+</header>

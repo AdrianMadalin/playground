@@ -1,5 +1,4 @@
 <section class="video">
-
   <div class="container" *ngIf="isAuth">
     <mat-card class="col-xl-8 col-md-8 offset-xl-2 offset-md-2">
       <h3 class="text-center">Incarca iFrame youtube</h3>
@@ -24,14 +23,19 @@
   </div>
 
   <div class="container text-center">
-    <h3 class="photo-h">Galerie video</h3>
+    <h3 class="video-h">Galerie video</h3>
+    <div *ngIf="showSpinner"
+      class="spinner-position">
+      <mat-spinner [color]="'accent'"> </mat-spinner>
+    </div>
+
   </div>
   <div class="row reset-margin-padding">
     <div *ngFor="let video of videos; let i=index;"
-         class="col-xl-4 col-lg-4 col-md-6 col-sm-12 reset-margin-padding">
+         class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
       <iframe [src]='video.url | safe'
               width="100%"
-              frameborder="0"
+              frameborder="5"
               class="img-fluid"
               allow="autoplay; encrypted-media" allowfullscreen></iframe>
       <button (click)="onRemoveBtnClick(i, video._id)"

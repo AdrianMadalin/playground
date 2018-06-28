@@ -18,6 +18,7 @@ export class FotoComponent implements OnInit {
   public isAuth: Boolean = false;
   public isDisplayed: Boolean = false;
   public image: { _id: string, index: number } = {_id: 'one', index: 5};
+  public showSpinner: Boolean = false;
 
   constructor(private photoVideoSrv: PhotoVideoService,
               private router: Router,
@@ -25,6 +26,7 @@ export class FotoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSpinner = true;
     this.isAuth = !!this.authService.getToken();
     this.getImages();
     this.uploadImageForm = new FormGroup({
@@ -36,10 +38,11 @@ export class FotoComponent implements OnInit {
   public getImages() {
     this.photoVideoSrv.getImages()
       .subscribe((response) => {
-        console.log(response);
+        this.showSpinner = false;
         this.images = response.images;
         console.log(this.images);
       }, (error) => {
+        this.showSpinner = true;
         console.log(error);
       });
   }

@@ -20,6 +20,7 @@ export class VideoComponent implements OnInit {
   public iFrameURL: string = '';
   public videos: Video[] = [];
   public video: { _id: string, index: number } = {_id: 'one', index: 0};
+  public showSpinner: Boolean = false;
 
 
   constructor(private photoVideoSrv: PhotoVideoService,
@@ -28,6 +29,7 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSpinner = true;
     this.isAuth = !!this.authService.getToken();
     this.getVideos();
 
@@ -38,12 +40,10 @@ export class VideoComponent implements OnInit {
 
   public getVideos() {
     this.photoVideoSrv.getVideos().subscribe(response => {
-      console.log(response);
+      this.showSpinner = false;
       this.videos = response.videos;
-      const videoOne = response.videos[0].url.split('/');
-      console.log(videoOne[0]);
-      console.log(videoOne[2]);
     }, error => {
+      this.showSpinner = true;
       console.log(error);
     })
   }
@@ -54,14 +54,13 @@ export class VideoComponent implements OnInit {
 
   public onUploadMovieUrl() {
     console.log(this.uploadMovieUrlForm);
-
-    // this.photoVideoSrv.uploadVideo({url: this.iFrameURL})
-    //   .subscribe(response => {
-    //     console.log(response);
-    //     this.videos.unshift(response.video)
-    //   }, error => {
-    //     console.log(error);
-    //   })
+    this.photoVideoSrv.uploadVideo({url: this.iFrameURL})
+      .subscribe(response => {
+        this.uploadMovieUrlForm.reset();
+        this.videos.unshift(response.video)
+      }, error => {
+        console.log(error);
+      })
   }
 
   public onRemoveBtnClick(index: number, id: string) {
