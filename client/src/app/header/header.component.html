@@ -1,24 +1,30 @@
-<header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-custom">
   <div class="header-logo">
     <a class="" routerLink="/">Playground</a>
   </div>
-  <div class="ml-auto header-links">
-    <ul class="form-inline">
-      <li><a routerLink="/" class="header-link-btn">Acasa</a></li>
-      <li><a routerLink="/galerie-foto" class="header-link-btn">Galerie foto</a></li>
-      <li><a routerLink="/galerie-video" class="header-link-btn">Galerie video</a></li>
-      <li><a routerLink="/contact" class="header-link-btn">Contact</a></li>
-      <li *ngIf="this.authService.isAuth"><a routerLink="/app/login" class="header-link-btn">Login</a></li>
-      <li *ngIf="this.authService.isAuth">
-        <a class="header-link-btn"
-           style="color: red; cursor: pointer"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="form-inline ml-auto" style="list-style-type: none">
+      <li  ><a routerLink="/" class="header-link-btn my-2 my-sm-0">Acasa</a></li>
+      <li><a routerLink="/galerie-foto" class="header-link-btn my-2 my-sm-0">Galerie foto</a></li>
+      <li><a routerLink="/galerie-video" class="header-link-btn my-2 my-sm-0">Galerie video</a></li>
+      <li><a routerLink="/contact" class="header-link-btn my-2 my-sm-0">Contact</a></li>
+      <li *ngIf="!this.authService.isAuth">
+        <a routerLink="/app/login" class="header-link-btn my-2 my-sm-0">Login</a>
+      </li>
+      <li *ngIf="!this.authService.isAuth">
+        <a routerLink="/app/login"
+           class="header-link-btn my-2 my-sm-0"
            (click)="onLogout()">Logout</a>
       </li>
-      <li *ngIf="this.authService.isAuth">
-        <a routerLink="/app/register"
-           class="header-link-btn"
-           style="margin-left: 0.5rem">Register</a>
+      <li *ngIf="!this.authService.isAuth">
+        <a routerLink="/app/register" class="header-link-btn">Register</a>
       </li>
     </ul>
   </div>
-</header>
+</nav>

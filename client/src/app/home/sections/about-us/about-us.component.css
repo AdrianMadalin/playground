@@ -14,8 +14,12 @@
 }
 
 .about-us_detail {
+  font-family: 'Roboto', cursive;
   text-align: justify;
+  margin-bottom: 0;
+}
+
+.about-us_detail-container {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  margin-bottom: 0;
 }
