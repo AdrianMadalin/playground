@@ -66,6 +66,7 @@ export class FotoComponent implements OnInit {
         for (let i = 0; i < response.images.length; i++) {
           this.images.unshift(response.images[i])
         }
+        this.uploadImageForm.reset();
       }, (error) => {
         this.authService.clearToken();
         this.isAuth = false;

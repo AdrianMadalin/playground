@@ -2,11 +2,13 @@ import {Injectable} from "@angular/core";
 import {UserModel} from "./user-model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {Subject} from "rxjs/internal/Subject";
 
 @Injectable({providedIn: "root"})
 export class AuthService {
-  public registerError = false;
+  private isAuthenticated = false;
   public token: string;
+  private authStatusListener: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient,
               private router: Router) {
@@ -40,6 +42,8 @@ export class AuthService {
         if (response.status === 'success') {
           console.log(response);
           this.saveCredentials( { userId: response.userId, token: response.token });
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
           this.router.navigate(['/']);
         }
       }, (error) => {
@@ -67,5 +71,11 @@ export class AuthService {
 
   public logout() {
     localStorage.clear();
+    this.isAuthenticated = false;
+    this.authStatusListener.next(this.isAuthenticated);
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
   }
 }

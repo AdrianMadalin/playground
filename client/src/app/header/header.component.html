@@ -11,20 +11,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="form-inline ml-auto" style="list-style-type: none">
       <li  ><a routerLink="/" class="header-link-btn my-2 my-sm-0">Acasa</a></li>
+      <li  ><a routerLink="/pachete" class="header-link-btn my-2 my-sm-0">Oferte</a></li>
       <li><a routerLink="/galerie-foto" class="header-link-btn my-2 my-sm-0">Galerie foto</a></li>
       <li><a routerLink="/galerie-video" class="header-link-btn my-2 my-sm-0">Galerie video</a></li>
       <li><a routerLink="/contact" class="header-link-btn my-2 my-sm-0">Contact</a></li>
-      <li *ngIf="!this.authService.isAuth">
-        <a routerLink="/app/login" class="header-link-btn my-2 my-sm-0">Login</a>
-      </li>
-      <li *ngIf="!this.authService.isAuth">
+      <li><a href="#" class="header-link-btn my-2 my-sm-0"><i class="fa fa-facebook-official socialize-icon" style="padding-left: 0"></i></a></li>
+      <li><a href="#" class="header-link-btn my-2 my-sm-0"><i class="fa fa-youtube-square socialize-icon"></i></a></li>
+
+      <li *ngIf="isAuth">
         <a routerLink="/app/login"
            class="header-link-btn my-2 my-sm-0"
-           (click)="onLogout()">Logout</a>
+           (click)="onLogout()"
+            style="color: #f40268;">Logout</a>
       </li>
-      <li *ngIf="!this.authService.isAuth">
-        <a routerLink="/app/register" class="header-link-btn">Register</a>
-      </li>
+      <!--TO BE DELETED-->
+      <!--<li *ngIf="!this.authService.isAuth">-->
+        <!--<a routerLink="/app/login" class="header-link-btn my-2 my-sm-0">Login</a>-->
+      <!--</li>-->
+
+      <!--<li *ngIf="!this.authService.isAuth">-->
+        <!--<a routerLink="/app/register" class="header-link-btn">Register</a>-->
+      <!--</li>-->
     </ul>
   </div>
 </nav>

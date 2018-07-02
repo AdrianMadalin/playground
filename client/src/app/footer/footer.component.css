@@ -11,6 +11,10 @@ footer {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+
+  position: absolute;
+  bottom: 0px;
+  z-index: 500;
 }
 
 .footer-icon-container{
